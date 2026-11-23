@@ -87,6 +87,8 @@ let privacyManifestResource: [PackageDescription.Resource] = []
 
 let package = Package(
     name: "swift-crypto",
+    // slowhand patch: iOS 16+ so arm64e objects get class_ro_t pointer signing.
+    platforms: [.macOS(.v13), .iOS(.v16), .macCatalyst(.v16), .tvOS(.v16), .watchOS(.v9), .visionOS(.v1)],
     products: [
         .library(name: "Crypto", targets: ["Crypto"]),
         // Kept for backward compatibility
